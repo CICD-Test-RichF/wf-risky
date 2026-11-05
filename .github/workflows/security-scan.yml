@@ -1,0 +1,10 @@
+name: security-scan
+on: [push, pull_request]
+jobs:
+  sast:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pretend SAST (always fails, but never blocks)
+        run: echo "found 3 high severity issues" && exit 1
